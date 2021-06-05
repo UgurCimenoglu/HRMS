@@ -21,7 +21,7 @@ public class AuthController {
 		this.authService = authService;
 	}
 
-	@PostMapping("/regitercandidate")
+	@PostMapping("/registercandidate")
 	public Result candidateRegister(@RequestBody CandidateForRegisterDto candidateForRegisterDto) {
 		return authService.candidateRegister(candidateForRegisterDto);
 	};
