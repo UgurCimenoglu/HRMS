@@ -1,5 +1,7 @@
 package kodlamaio.HRMS.business.concretes;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,6 +38,12 @@ public class CandidateManager implements CandidateService {
 			return new SuccessDataResult<Candidate>(result, "User available for nationality number.");
 		}
 		return new ErrorDataResult<Candidate>("No user found with this number");
+	}
+
+	@Override
+	public DataResult<List<Candidate>> getAll() {
+		var result = candidateDao.findAll();
+		return new SuccessDataResult<List<Candidate>>(result, "Candidates has been listed");
 	}
 
 }
