@@ -30,15 +30,15 @@ public class JobAdvertisement {
 	@Column(name = "id")
 	private int id;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@ManyToOne()
 	@JoinColumn(name = "employer_id")
 	private Employer employer;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@ManyToOne()
 	@JoinColumn(name = "job_title_id")
 	private JobTitle jobTitle;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@ManyToOne()
 	@JoinColumn(name = "city_id")
 	private City city;
 

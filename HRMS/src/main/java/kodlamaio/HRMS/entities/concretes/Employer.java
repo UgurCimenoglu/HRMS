@@ -26,9 +26,7 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "jobAdvertisements"})
 public class Employer extends User {
 
-	@Id
-	@Column(name = "id")
-	private int id;
+
 
 	@Column(name = "company_name")
 	private String companyName;
