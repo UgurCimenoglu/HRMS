@@ -18,4 +18,6 @@ public interface JobAdvertisementService {
 	
 	DataResult<List<JobAdvertisement>> findAllByIsActiveAndEmployer_Id(boolean isActive, int employerId);
 	
+	Result jobAdvertisementStatusPassive(int jobAdvertisementId, boolean isActive);
+	
 }

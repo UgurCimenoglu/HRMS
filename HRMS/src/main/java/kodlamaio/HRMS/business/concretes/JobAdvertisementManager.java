@@ -48,11 +48,18 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 	}
 
 	@Override
-	public DataResult<List<JobAdvertisement>> findAllByIsActiveAndEmployer_Id(boolean isActive,
-			int employerId) {
+	public DataResult<List<JobAdvertisement>> findAllByIsActiveAndEmployer_Id(boolean isActive, int employerId) {
 		return new SuccessDataResult<List<JobAdvertisement>>(
 				this.jobAdvertisementDao.findAllByIsActiveAndEmployer_Id(isActive, employerId),
 				"Yayinda olan ilanlar listelendi. ");
+	}
+
+	@Override
+	public Result jobAdvertisementStatusPassive(int jobAdvertisementId, boolean isActive) {
+		JobAdvertisement jobAdvertisement = this.jobAdvertisementDao.getById(jobAdvertisementId);
+		jobAdvertisement.setActive(isActive);
+		this.jobAdvertisementDao.save(jobAdvertisement);
+		return new SuccessResult("İlan " + isActive + " olarak güncellendi.");
 	}
 
 }

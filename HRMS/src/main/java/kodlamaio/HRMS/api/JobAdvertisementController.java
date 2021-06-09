@@ -51,4 +51,9 @@ public class JobAdvertisementController {
 			@RequestParam int employerId) {
 		return this.advertisementService.findAllByIsActiveAndEmployer_Id(isActive, employerId);
 	}
+	
+	@PostMapping("/jobAdvertisementStatusPassive")
+	public Result jobAdvertisementStatusPassive(@RequestParam int jobAdvertisementId, @RequestParam boolean isActive) {
+		return this.advertisementService.jobAdvertisementStatusPassive(jobAdvertisementId,isActive);
+	}
 }
