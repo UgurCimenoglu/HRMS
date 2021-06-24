@@ -20,9 +20,9 @@ public class CloudinaryAdapter {
 			"api_key","436554978638323", 
 			"api_secret", "po75ikA6LIqs7AD4XkRShi1dm0U"));
 
-	public static DataResult<Object> upload(MultipartFile file) throws IOException {
+	public static SuccessDataResult<Map> upload(MultipartFile file) throws IOException {
 		Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
-		return new SuccessDataResult<Object>(uploadResult.get("url"));
+		return new SuccessDataResult<Map>(uploadResult);
 	}
 
 	public static Result delete(String id) throws IOException {
