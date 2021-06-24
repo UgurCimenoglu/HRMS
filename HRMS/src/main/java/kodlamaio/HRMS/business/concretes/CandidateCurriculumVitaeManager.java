@@ -37,4 +37,9 @@ public class CandidateCurriculumVitaeManager implements CandidateCurriculumVitae
 		return new SuccessResult("Cv eklendi.");
 	}
 
+	@Override
+	public DataResult<CandidateCurriculumVitae> getById(int id) {
+		return new SuccessDataResult<CandidateCurriculumVitae>(this.candidateCurriculumVitaeDao.getById(id),"CV Id'ye göre listelendi.");
+	}
+
 }

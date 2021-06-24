@@ -13,6 +13,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
@@ -24,6 +25,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "candidate_curriculum_vitaes")
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) 
 public class CandidateCurriculumVitae {
 
 	@Id
@@ -33,6 +35,7 @@ public class CandidateCurriculumVitae {
 	@OneToOne
 	@JsonBackReference
 	@PrimaryKeyJoinColumn(name = "id", referencedColumnName = "id")
+
 	private Candidate candidate;
 
 	@JsonManagedReference

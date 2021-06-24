@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import kodlamaio.HRMS.business.abstracts.CandidateCurriculumVitaeService;
 import kodlamaio.HRMS.core.utilities.DataResult;
@@ -32,6 +33,11 @@ public class CandidateCurriculumVitaesController {
 	@PostMapping(value = "/add")
 	public Result add(@RequestBody CandidateCurriculumVitae candidateCurriculumVitae) {
 		return this.candidateCurriculumVitaeService.add(candidateCurriculumVitae);
+	}
+
+	@GetMapping("/geybyid")
+	public DataResult<CandidateCurriculumVitae> getById(@RequestParam int id) {
+		return this.candidateCurriculumVitaeService.getById(id);
 	}
 
 }
