@@ -1,10 +1,13 @@
 package kodlamaio.HRMS.entities.concretes;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-
+import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -17,6 +20,10 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 @PrimaryKeyJoinColumn(name = "id", referencedColumnName = "id")
 public class Candidate extends User {
+
+	@OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)
+	@JsonManagedReference
+	private CandidateCurriculumVitae candidateCurriculumVitae;
 
 	@Column(name = "first_name")
 	private String firstName;
