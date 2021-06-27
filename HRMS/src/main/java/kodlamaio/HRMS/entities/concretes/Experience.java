@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -36,12 +38,18 @@ public class Experience {
 	private CandidateCurriculumVitae candidateCurriculumVitaes;
 
 	@Column(name = "workplace_name")
+	@NotNull
+	@NotBlank
 	private String workplaceName;
 
 	@Column(name = "position_name")
+	@NotNull
+	@NotBlank
 	private String positionName;
 
 	@Column(name = "start_date")
+	@NotNull
+	@NotBlank
 	private Date startDate;
 
 	@Column(name = "leave_date")

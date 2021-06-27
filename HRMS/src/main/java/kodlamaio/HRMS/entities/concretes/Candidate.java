@@ -6,6 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -27,15 +31,22 @@ public class Candidate extends User {
 	private CandidateCurriculumVitae candidateCurriculumVitae;
 
 	@Column(name = "first_name")
+	@NotNull
+	@NotBlank
 	private String firstName;
 
 	@Column(name = "last_name")
+	@NotNull
+	@NotBlank
 	private String lastName;
-
+	
 	@Column(name = "identity_number")
+	@NotNull
+	@Length(min = 11,max = 11)
 	private String nationalityNumber;
 
 	@Column(name = "birth_year")
+	@NotNull
 	private int birthDate;
 
 	public Candidate(String email, String password, String firstName, String lastName, String nationalityNumber,

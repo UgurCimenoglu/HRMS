@@ -3,6 +3,8 @@ package kodlamaio.HRMS.business.concretes;
 import java.io.IOException;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -35,11 +37,11 @@ public class CandidateCurriculumVitaeManager implements CandidateCurriculumVitae
 	}
 
 	@Override
-	public Result add(MultipartFile file, CandidateCurriculumVitae candidateCurriculumVitae) throws IOException {
+	public Result add(@Valid MultipartFile file, CandidateCurriculumVitae candidateCurriculumVitae) throws IOException {
 		if (file.getSize() > 0) {
 			var result = CloudinaryAdapter.upload(file);
-			candidateCurriculumVitae
-					.setImage(new Image(candidateCurriculumVitae.getId(), candidateCurriculumVitae, result.getData().get("url").toString()));
+			candidateCurriculumVitae.setImage(new Image(candidateCurriculumVitae.getId(), candidateCurriculumVitae,
+					result.getData().get("url").toString()));
 		}
 		this.candidateCurriculumVitaeDao.save(candidateCurriculumVitae);
 		return new SuccessResult("Cv eklendi.");

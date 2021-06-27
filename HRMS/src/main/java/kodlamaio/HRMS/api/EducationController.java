@@ -1,16 +1,13 @@
 package kodlamaio.HRMS.api;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import kodlamaio.HRMS.business.abstracts.EducationService;
-import kodlamaio.HRMS.core.utilities.DataResult;
-import kodlamaio.HRMS.entities.concretes.Education;
 
 @RestController
 @RequestMapping("/api/education")
@@ -25,7 +22,7 @@ public class EducationController {
 	}
 
 	@GetMapping("/getallbycviddesc")
-	public DataResult<List<Education>> getAllByCvIdDesc(@RequestParam int id) {
-		return this.educationService.getAllByCvIdDesc(id);
+	public ResponseEntity<?> getAllByCvIdDesc(@RequestParam int id) {
+		return ResponseEntity.ok(this.educationService.getAllByCvIdDesc(id));
 	}
 }

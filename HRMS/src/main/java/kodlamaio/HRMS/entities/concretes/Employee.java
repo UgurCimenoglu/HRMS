@@ -1,13 +1,13 @@
 package kodlamaio.HRMS.entities.concretes;
 
-import java.time.LocalDate;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -18,17 +18,21 @@ import lombok.NoArgsConstructor;
 @Table(name = "employees")
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-@PrimaryKeyJoinColumn(name = "id" , referencedColumnName = "id")
+@PrimaryKeyJoinColumn(name = "id", referencedColumnName = "id")
 public class Employee extends User {
-	
+
 	@Id
 	@Column(name = "id")
 	private int id;
-	
+
 	@Column(name = "first_name")
+	@NotNull
+	@NotBlank
 	private String firstName;
-	
+
 	@Column(name = "last_name")
+	@NotNull
+	@NotBlank
 	private String lastName;
 
 }

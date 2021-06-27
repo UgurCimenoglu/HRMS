@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -29,12 +31,18 @@ public class Employer extends User {
 
 
 	@Column(name = "company_name")
+	@NotNull
+	@NotBlank
 	private String companyName;
 
 	@Column(name = "web_address")
+	@NotNull
+	@NotBlank
 	private String webAddress;
 
 	@Column(name = "phone_number")
+	@NotNull
+	@NotBlank
 	private String phoneNumber;
 
 	@OneToMany(mappedBy = "employer")

@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -36,8 +38,12 @@ public class Link {
 	private CandidateCurriculumVitae candidateCurriculumVitaes;
 
 	@Column(name = "link_title")
+	@NotNull
+	@NotBlank
 	private String linkTitle;
 
 	@Column(name = "link_url")
+	@NotNull
+	@NotBlank
 	private String linkUrl;
 }

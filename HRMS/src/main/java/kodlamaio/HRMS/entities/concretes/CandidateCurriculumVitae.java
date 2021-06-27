@@ -12,6 +12,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -34,10 +36,10 @@ public class CandidateCurriculumVitae {
 	@Column(name = "id")
 	private int id;
 
+	
 	@OneToOne
 	@JsonBackReference
 	@PrimaryKeyJoinColumn(name = "id", referencedColumnName = "id")
-
 	private Candidate candidate;
 
 	@JsonManagedReference
@@ -65,6 +67,8 @@ public class CandidateCurriculumVitae {
 	private Image image;
 	
 	@Column(name = "cover_letter")
+	@NotNull
+	@NotBlank
 	private String coverLetter;
 
 	@Column(name = "create_date")

@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -25,6 +27,8 @@ public class JobTitle {
 	private int id;
 
 	@Column(name = "title")
+	@NotNull
+	@NotBlank
 	private String title;
 	
 	@OneToMany(mappedBy = "jobTitle")

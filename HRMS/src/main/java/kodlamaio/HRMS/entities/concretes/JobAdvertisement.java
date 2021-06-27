@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -41,6 +43,8 @@ public class JobAdvertisement {
 	private City city;
 
 	@Column(name = "description")
+	@NotNull
+	@NotBlank
 	private String description;
 
 	@Column(name = "min_salary")
