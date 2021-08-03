@@ -34,4 +34,9 @@ public class EmployerManager implements EmployerService {
 		return new SuccessDataResult<List<Employer>>(result, "Employers has been listed");
 	}
 
+	@Override
+	public DataResult<Employer> getById(int id) {
+		return new SuccessDataResult<Employer>(this.empolyerDao.getById(id));
+	}
+
 }

@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import kodlamaio.HRMS.business.abstracts.ExperienceService;
 import kodlamaio.HRMS.core.utilities.DataResult;
+import kodlamaio.HRMS.core.utilities.Result;
 import kodlamaio.HRMS.core.utilities.SuccessDataResult;
+import kodlamaio.HRMS.core.utilities.SuccessResult;
 import kodlamaio.HRMS.dataAccess.abstracts.ExperienceDao;
 import kodlamaio.HRMS.entities.concretes.Experience;
 
@@ -25,6 +27,12 @@ public class ExperienceManager implements ExperienceService{
 	@Override
 	public DataResult<List<Experience>> getAllByCvIdDesc(int cvId) {
 		return new SuccessDataResult<List<Experience>>(experienceDao.getAllByCandidateCurriculumVitaes_IdOrderByLeaveDateDesc(cvId),"İş deneyimleri listelendi.");
+	}
+
+	@Override
+	public Result add(Experience experience) {
+		this.experienceDao.save(experience);
+		return new SuccessResult("İş Deneyimi Eklendi.");
 	}
 
 }

@@ -62,4 +62,9 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 		return new SuccessResult("İlan " + isActive + " olarak güncellendi.");
 	}
 
+	@Override
+	public DataResult<JobAdvertisement> getById(int id) {
+		return new SuccessDataResult<JobAdvertisement>(this.jobAdvertisementDao.getById(id),"Veri Listelendi.");
+	}
+
 }

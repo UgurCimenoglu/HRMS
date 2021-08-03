@@ -37,9 +37,8 @@ public class CandidateCurriculumVitae {
 	private int id;
 
 	
-	@OneToOne
-	@JsonBackReference
-	@PrimaryKeyJoinColumn(name = "id", referencedColumnName = "id")
+	@OneToOne(mappedBy = "candidateCurriculumVitae")
+	@JsonManagedReference
 	private Candidate candidate;
 
 	@JsonManagedReference
@@ -75,3 +74,7 @@ public class CandidateCurriculumVitae {
 	private Date createDate;
 
 }
+
+
+//***JsonManagedReference anotasyonu verdiğimiz entitye data geliyor. JsonBackReference anotasyonu verdiğimiz
+//entityde data gelmez!!!

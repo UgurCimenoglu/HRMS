@@ -20,4 +20,5 @@ public interface JobAdvertisementService {
 	
 	Result jobAdvertisementStatusPassive(int jobAdvertisementId, boolean isActive);
 	
+	DataResult<JobAdvertisement> getById(int id);
 }

@@ -3,6 +3,7 @@ package kodlamaio.HRMS.api;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,6 +18,7 @@ import kodlamaio.HRMS.entities.concretes.JobAdvertisement;
 
 @RestController
 @RequestMapping("/api/jobadvertisements")
+@CrossOrigin("http://localhost:3000/")
 public class JobAdvertisementController {
 	private JobAdvertisementService advertisementService;
 
@@ -31,7 +33,7 @@ public class JobAdvertisementController {
 		return this.advertisementService.getAll();
 	}
 
-	@GetMapping("getallbydatedesc")
+	@GetMapping("/getallbydatedesc")
 	public DataResult<List<JobAdvertisement>> findAllByOrderByCreateDateDesc() {
 		return this.advertisementService.findAllByOrderByCreateDateDesc();
 	}
@@ -51,9 +53,14 @@ public class JobAdvertisementController {
 			@RequestParam int employerId) {
 		return this.advertisementService.findAllByIsActiveAndEmployer_Id(isActive, employerId);
 	}
-	
+
 	@PostMapping("/jobAdvertisementStatusPassive")
 	public Result jobAdvertisementStatusPassive(@RequestParam int jobAdvertisementId, @RequestParam boolean isActive) {
-		return this.advertisementService.jobAdvertisementStatusPassive(jobAdvertisementId,isActive);
+		return this.advertisementService.jobAdvertisementStatusPassive(jobAdvertisementId, isActive);
+	}
+
+	@GetMapping("/getbyid")
+	public DataResult<JobAdvertisement> getById(@RequestParam int id) {
+		return this.advertisementService.getById(id);
 	}
 }
