@@ -15,12 +15,12 @@ import kodlamaio.HRMS.entities.concretes.WorkingType;
 @RestController
 @RequestMapping("/api/workingtype")
 @CrossOrigin("http://localhost:3000/")
-public class WrkingTypeController {
+public class WorkingTypeController {
 
 	private WorkingTypeService workingTypeService;
 
 	@Autowired
-	public WrkingTypeController(WorkingTypeService workingTypeService) {
+	public WorkingTypeController(WorkingTypeService workingTypeService) {
 		super();
 		this.workingTypeService = workingTypeService;
 	}
