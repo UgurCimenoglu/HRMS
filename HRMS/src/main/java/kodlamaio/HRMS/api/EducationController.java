@@ -3,6 +3,7 @@ package kodlamaio.HRMS.api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,7 +35,11 @@ public class EducationController {
 	
 	@PostMapping("/add")
 	public Result add(@RequestBody Education education) {
-		return this.educationService.add(education);
-		
+		return this.educationService.add(education);	
+	}
+	
+	@DeleteMapping("delete")
+	public Result deleteById(@RequestParam int id) {
+		return this.educationService.deleteById(id);
 	}
 }

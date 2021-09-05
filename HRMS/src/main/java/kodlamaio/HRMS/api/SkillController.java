@@ -8,34 +8,35 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import kodlamaio.HRMS.business.abstracts.LanguageService;
+import kodlamaio.HRMS.business.abstracts.SkillService;
 import kodlamaio.HRMS.core.utilities.DataResult;
 import kodlamaio.HRMS.core.utilities.Result;
-import kodlamaio.HRMS.entities.concretes.Language;
+import kodlamaio.HRMS.entities.concretes.Skill;
 
 @RestController
-@RequestMapping("/api/language")
+@RequestMapping("/api/skill")
 @CrossOrigin("http://localhost:3000/")
-public class LanguageController {
+public class SkillController {
 
-	private LanguageService languageService;
+	private SkillService skillService;
 
 	@Autowired
-	public LanguageController(LanguageService languageService) {
+	public SkillController(SkillService skillService) {
 		super();
-		this.languageService = languageService;
-	}
-	
-	@PostMapping("/add")
-	public Result add(@RequestBody Language language) {
-		return this.languageService.add(language);
+		this.skillService = skillService;
 	}
 
 	@GetMapping("/getallbycvid")
-	public DataResult<List<Language>> getByCvId(int cvId) {
-		return this.languageService.getAllByCvId(cvId);
+	public DataResult<List<Skill>> getAllbyCvId(@RequestParam int cvId) {
+		return this.skillService.getByCvId(cvId);
+	}
+	
+	@PostMapping("/add")
+	public Result add(@RequestBody Skill skill) {
+		return this.skillService.add(skill);
 	}
 
 }

@@ -36,4 +36,10 @@ public class EducationManager implements EducationService {
 		return new SuccessResult("Eğitim Bilgisi Eklendi.");
 	}
 
+	@Override
+	public Result deleteById(int id) {
+		this.educationDao.deleteById(id);
+		return new SuccessResult("Eğitim Bilgisi Silindi.");
+	}
+
 }
